@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin – BellaViaggi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #e8edf2;
+      --shadow-light: #ffffff;
+      --shadow-dark: #b8bec7;
+      --neu: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+      --neu-sm: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+      --neu-in: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+      --gold: #c9a84c;
+      --text: #3a3f4a;
+      --text-light: #6b7280;
+      --green: #2d7a4f;
+      --red: #c0392b;
+      --radius: 14px;
+    }
+    body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* LOGIN */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-card {
+      background: var(--bg);
+      border-radius: 24px;
+      box-shadow: var(--neu);
+      padding: 3rem;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .login-card h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .login-card p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 2rem; }
+    .login-card input {
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      background: var(--bg);
+      box-shadow: var(--neu-in);
+      outline: none;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    .login-error { color: var(--red); font-size: 0.88rem; margin-bottom: 1rem; display: none; }
+
+    /* ADMIN LAYOUT */
+    #admin-screen { display: none; }
+    .admin-header {
+      background: var(--bg);
+      box-shadow: 0 4px 20px rgba(184,190,199,0.5);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .admin-header h1 { font-size: 1.3rem; font-weight: 700; }
+    .admin-header span { color: var(--text-light); font-size: 0.88rem; }
+    .header-btns { display: flex; gap: 1rem; align-items: center; }
+
+    .admin-body { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem; }
+
+    /* TABS */
+    .tabs { display: flex; gap: 0.8rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .tab {
+      padding: 0.65rem 1.5rem;
+      border-radius: 50px;
+      border: none;
+      background: var(--bg);
+      box-shadow: var(--neu-sm);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .tab.active {
+      background: var(--text);
+      color: white;
+      box-shadow: none;
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* CARDS */
+    .card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      box-shadow: var(--neu);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .card h2 { font-size: 1.1rem; margin-bottom: 1.5rem; padding-bottom: 0.8rem; border-bottom: 2px solid #dde2e8; }
+    .card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 1rem; color: var(--gold); }
+
+    .form-row { margin-bottom: 1.2rem; }
+    .form-row label { display: block; font-size: 0.84rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--text-light); }
+    .form-row input,
+    .form-row textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      background: var(--bg);
+      box-shadow: var(--neu-in);
+      outline: none;
+      color: var(--text);
+      resize: vertical;
+    }
+    .form-row textarea { min-height: 90px; }
+
+    /* IMAGE GRID */
+    .img-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.2rem; }
+    .img-item {
+      background: var(--bg);
+      border-radius: var(--radius);
+      box-shadow: var(--neu-sm);
+      overflow: hidden;
+      transition: 0.2s;
+    }
+    .img-item:hover { box-shadow: var(--neu); }
+    .img-preview {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+    }
+    .img-info { padding: 0.8rem; }
+    .img-info p { font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.6rem; font-weight: 500; }
+    .img-upload-btn {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      background: var(--bg);
+      box-shadow: var(--neu-sm);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .img-upload-btn:hover { box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light); }
+    .img-reset-btn {
+      display: block;
+      width: 100%;
+      margin-top: 0.4rem;
+      padding: 0.4rem;
+      background: none;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem;
+      color: var(--red);
+      cursor: pointer;
+    }
+    input[type="file"] { display: none; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-gold { background: var(--gold); color: white; box-shadow: 0 4px 16px rgba(201,168,76,0.4); }
+    .btn-gold:hover { background: #a07830; transform: translateY(-1px); }
+    .btn-dark { background: var(--text); color: white; }
+    .btn-dark:hover { background: #2a2f3a; }
+    .btn-outline { background: var(--bg); box-shadow: var(--neu-sm); color: var(--text); }
+    .btn-outline:hover { box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light); }
+    .btn-red { background: var(--red); color: white; }
+
+    .save-bar {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg);
+      box-shadow: var(--neu);
+      border-radius: 50px;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      z-index: 200;
+    }
+    .save-bar span { font-size: 0.92rem; color: var(--text-light); }
+    .saved-msg { color: var(--green); font-weight: 600; font-size: 0.9rem; display: none; }
+
+    .preview-link {
+      font-size: 0.88rem;
+      color: var(--gold);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .preview-link:hover { text-decoration: underline; }
+
+    .day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+    @media (max-width: 700px) {
+      .day-grid { grid-template-columns: 1fr; }
+      .img-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-card">
+    <h1>BellaViaggi</h1>
+    <p>Log in om de website te beheren</p>
+    <input type="password" id="pw-input" placeholder="Wachtwoord" />
+    <p class="login-error" id="login-error">Ongeldig wachtwoord</p>
+    <button class="btn btn-gold" style="width:100%" onclick="doLogin()">Inloggen</button>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="admin-screen">
+  <div class="admin-header">
+    <div>
+      <h1>BellaViaggi Admin</h1>
+      <span>Websitebeheer</span>
+    </div>
+    <div class="header-btns">
+      <a href="index.html" target="_blank" class="preview-link">Bekijk website</a>
+      <button class="btn btn-outline" onclick="doLogout()">Uitloggen</button>
+    </div>
+  </div>
+
+  <div class="admin-body">
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('teksten')">Teksten</button>
+      <button class="tab" onclick="switchTab('fotos')">Fotos</button>
+      <button class="tab" onclick="switchTab('programma')">Programma</button>
+    </div>
+
+    <!-- TAB: TEKSTEN -->
+    <div class="tab-panel active" id="tab-teksten">
+
+      <div class="card">
+        <h2>Hero sectie</h2>
+        <div class="form-row">
+          <label>Hoofdtitel</label>
+          <input type="text" id="txt-hero-title" />
+        </div>
+        <div class="form-row">
+          <label>Subtitel</label>
+          <textarea id="txt-hero-sub" rows="2"></textarea>
+        </div>
+        <div class="form-row">
+          <label>Prijs (bijv. €1.073)</label>
+          <input type="text" id="txt-prijs" />
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Introductie</h2>
+        <div class="form-row">
+          <label>Titel</label>
+          <input type="text" id="txt-intro-title" />
+        </div>
+        <div class="form-row">
+          <label>Tekst alinea 1</label>
+          <textarea id="txt-intro-p1"></textarea>
+        </div>
+        <div class="form-row">
+          <label>Tekst alinea 2</label>
+          <textarea id="txt-intro-p2"></textarea>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Hotel</h2>
+        <div class="form-row">
+          <label>Hotelnaam</label>
+          <input type="text" id="txt-hotel-naam" />
+        </div>
+        <div class="form-row">
+          <label>Omschrijving</label>
+          <textarea id="txt-hotel-desc"></textarea>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Contact</h2>
+        <div class="form-row">
+          <label>Telefoonnummer</label>
+          <input type="text" id="txt-telefoon" />
+        </div>
+        <div class="form-row">
+          <label>E-mailadres</label>
+          <input type="text" id="txt-email" />
+        </div>
+        <div class="form-row">
+          <label>Openingstijden</label>
+          <input type="text" id="txt-openingstijden" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TAB: FOTOS -->
+    <div class="tab-panel" id="tab-fotos">
+      <div class="card">
+        <h2>Afbeeldingen beheren</h2>
+        <p style="color:var(--text-light);font-size:0.9rem;margin-bottom:1.5rem;">Klik op een foto om een nieuwe te uploaden. De foto wordt opgeslagen in de browser.</p>
+        <div class="img-grid" id="img-grid"></div>
+      </div>
+    </div>
+
+    <!-- TAB: PROGRAMMA -->
+    <div class="tab-panel" id="tab-programma">
+      <div class="card">
+        <h2>Dagprogramma</h2>
+        <div class="day-grid" id="day-grid"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SAVE BAR -->
+  <div class="save-bar">
+    <span>Wijzigingen worden opgeslagen in de browser</span>
+    <span class="saved-msg" id="saved-msg">Opgeslagen!</span>
+    <button class="btn btn-outline" onclick="resetAll()">Alles herstellen</button>
+    <button class="btn btn-gold" onclick="saveAll()">Opslaan</button>
+  </div>
+</div>
+
+<script>
+const ADMIN_PASSWORD = 'milaan2026';
+const STORAGE_KEY = 'bellaviaggi_cms';
+
+// Default content
+const DEFAULTS = {
+  'hero-title': 'Ontdek het Tijdloze Milaan',
+  'hero-sub': 'Een volledig verzorgde culturele reis voor de levensgenieter die houdt van kwaliteit, gemak en Italiaanse klasse.',
+  'prijs': '€1.073',
+  'intro-title': 'Een zorgeloze Cultuurreis',
+  'intro-p1': 'Milaan is dé stad waar historische pracht en Italiaanse klasse samenkomen. Wij hebben een exclusieve pakketreis samengesteld die volledig draait om kwaliteit, gemak en gastvrijheid.',
+  'intro-p2': 'We begrijpen dat u onbezorgd wilt genieten. Daarom hebben wij alle logistiek al voor u uitgedacht — van de vluchttijden tot de beste looproutes door de stad.',
+  'hotel-naam': 'Leonardo Hotel Milan City Center',
+  'hotel-desc': 'Het Leonardo Hotel Milan City Center is een elegant viersterrenhotel dat stijl en comfort perfect combineert. Met een klassieke uitstraling ligt het hotel in het hart van de stad, tussen Corso Sempione en Porta Garibaldi.',
+  'telefoon': '020 – 123 45 67',
+  'email': 'info@bellaviaggi.nl',
+  'openingstijden': 'Ma-vr 09:00–17:30',
+  'days': [
+    { title: 'Aankomst Milaan & Aperitivo', desc: 'Na een hartelijk welkom en de check-in heeft u de tijd om uw koffer uit te pakken en bij te komen. We sluiten de middag ontspannen af in de rustige hoteltuin met een klassieke Milanese aperitivo — een goed glas wijn met verfijnde hapjes.' },
+    { title: 'Duomo di Milano & de Dakterrassen', desc: 'Ontdek het kloppende hart en hét symbool van de stad: de indrukwekkende Duomo di Milano. Bewonder de gebrandschilderde ramen en het museum. Het hoogtepunt? De spectaculaire dakterrassen met panoramisch uitzicht over de stad.' },
+    { title: 'Het Laatste Avondmaal', desc: 'Beleef een onvergetelijke ochtend in het teken van de Italiaanse Renaissance. Bezoek de kerk Santa Maria delle Grazie met het wereldberoemde fresco van Leonardo da Vinci. De toegangstickets zijn reeds gereserveerd.' },
+    { title: 'Como, Bellagio & Lugano', desc: 'Tijdens deze dagtocht verlaat u de stad voor de natuur van de Alpen. U bezoekt Como, per boot reist u naar Bellagio — de parel van het Comomeer. Als kers op de taart steekt u de grens over naar het Zwitserse Lugano.' },
+    { title: 'Teatro alla Scala', desc: 'Stap in de wereld van de opera met een exclusieve rondleiding door het wereldberoemde Teatro alla Scala. Bewonder het schitterende interieur en treed in de voetsporen van Luciano Pavarotti en Maria Callas.' },
+    { title: 'Kookworkshop in een Kunstgalerie', desc: 'Dompel u onder in de authentieke Italiaanse gastvrijheid in een prachtig 16e-eeuws pand. U leert verse pasta, ravioli en klassieke tiramisù bereiden, omringd door een indrukwekkende kunstcollectie.' },
+    { title: 'Milano Fashion Tour', desc: 'Tijdens deze exclusieve privérondleiding ontdekt u het hart van de Italiaanse mode in het beroemde Quadrilatero della Moda. Bezoek verborgen showrooms, authentieke ateliers en unieke designerstudio\'s.' },
+    { title: 'Vrije Ochtend & Vertrek', desc: 'Na een rustig ontbijt geniet u van uw laatste ochtend in Milaan. Wandel naar de chique Via Montenapoleone voor exclusieve souvenirs of een laatste Italiaanse koffie op een terras.' },
+  ]
+};
+
+const IMAGES = [
+  { id: 'img-hero',    label: 'Hero achtergrond',         src: 'images/odt_image1.png' },
+  { id: 'img-intro',   label: 'Intro (tram)',              src: 'images/odt_image12.png' },
+  { id: 'img-dag2',    label: 'Dag 2 – Duomo',            src: 'images/odt_image13.png' },
+  { id: 'img-dag3',    label: 'Dag 3 – Laatste Avondmaal', src: 'images/odt_image14.png' },
+  { id: 'img-dag4',    label: 'Dag 4 – Comomeer',         src: 'images/odt_image15.png' },
+  { id: 'img-dag5',    label: 'Dag 5 – Teatro alla Scala', src: 'images/odt_image16.png' },
+  { id: 'img-dag6',    label: 'Dag 6 – Kookworkshop',     src: 'images/odt_image17.png' },
+  { id: 'img-dag7',    label: 'Dag 7 – Fashion Tour',     src: 'images/odt_image18.png' },
+  { id: 'img-hotel',   label: 'Hotel lobby',              src: 'images/odt_image3.png' },
+  { id: 'img-ontbijt', label: 'Hotel – Ontbijt',          src: 'images/odt_image6.png' },
+  { id: 'img-fitness', label: 'Hotel – Fitness',          src: 'images/odt_image5.png' },
+  { id: 'img-rest',    label: 'Hotel – Restaurant',       src: 'images/odt_image4.png' },
+  { id: 'img-kamer1',  label: 'Kamer 1',                  src: 'images/odt_image7.png' },
+  { id: 'img-kamer2',  label: 'Kamer 2',                  src: 'images/odt_image9.png' },
+  { id: 'img-kamer3',  label: 'Badkamer',                 src: 'images/odt_image10.png' },
+  { id: 'img-schiphol',label: 'Schiphol',                 src: 'images/odt_image11.png' },
+  { id: 'img-linate',  label: 'Milano Linate',            src: 'images/odt_image19.png' },
+];
+
+// Load saved data
+function loadData() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+}
+
+// Login
+function doLogin() {
+  const pw = document.getElementById('pw-input').value;
+  if (pw === ADMIN_PASSWORD) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-screen').style.display = 'block';
+    initAdmin();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+  }
+}
+document.getElementById('pw-input').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+
+function doLogout() {
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('admin-screen').style.display = 'none';
+  document.getElementById('pw-input').value = '';
+}
+
+// Tabs
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// Init admin with saved values
+function initAdmin() {
+  const data = loadData();
+
+  // Texts
+  Object.keys(DEFAULTS).forEach(key => {
+    if (key === 'days') return;
+    const el = document.getElementById('txt-' + key);
+    if (el) el.value = data[key] !== undefined ? data[key] : DEFAULTS[key];
+  });
+
+  // Days
+  const dayGrid = document.getElementById('day-grid');
+  dayGrid.innerHTML = '';
+  const days = data.days || DEFAULTS.days;
+  days.forEach((day, i) => {
+    dayGrid.innerHTML += `
+      <div style="background:var(--bg);border-radius:var(--radius);box-shadow:var(--neu-sm);padding:1.2rem;">
+        <div style="font-size:0.8rem;font-weight:600;color:var(--gold);margin-bottom:0.8rem;">Dag ${i+1}</div>
+        <div class="form-row">
+          <label>Titel</label>
+          <input type="text" id="day-title-${i}" value="${escHtml(day.title)}" />
+        </div>
+        <div class="form-row">
+          <label>Omschrijving</label>
+          <textarea id="day-desc-${i}" rows="4">${escHtml(day.desc)}</textarea>
+        </div>
+      </div>`;
+  });
+
+  // Images
+  const imgGrid = document.getElementById('img-grid');
+  imgGrid.innerHTML = '';
+  IMAGES.forEach(img => {
+    const customSrc = data[img.id];
+    const displaySrc = customSrc || img.src;
+    imgGrid.innerHTML += `
+      <div class="img-item">
+        <img class="img-preview" id="preview-${img.id}" src="${displaySrc}" alt="${img.label}" />
+        <div class="img-info">
+          <p>${img.label}</p>
+          <input type="file" id="file-${img.id}" accept="image/*" onchange="uploadImg('${img.id}', this)" />
+          <button class="img-upload-btn" onclick="document.getElementById('file-${img.id}').click()">Foto wijzigen</button>
+          ${customSrc ? `<button class="img-reset-btn" onclick="resetImg('${img.id}', '${img.src}')">Origineel herstellen</button>` : ''}
+        </div>
+      </div>`;
+  });
+}
+
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Upload image → base64
+function uploadImg(id, input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('preview-' + id).src = e.target.result;
+    const data = loadData();
+    data[id] = e.target.result;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    showSaved();
+    initAdmin(); // refresh to show reset button
+  };
+  reader.readAsDataURL(file);
+}
+
+// Reset single image
+function resetImg(id, originalSrc) {
+  const data = loadData();
+  delete data[id];
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  document.getElementById('preview-' + id).src = originalSrc;
+  initAdmin();
+  showSaved();
+}
+
+// Save all texts
+function saveAll() {
+  const data = loadData();
+
+  Object.keys(DEFAULTS).forEach(key => {
+    if (key === 'days') return;
+    const el = document.getElementById('txt-' + key);
+    if (el) data[key] = el.value;
+  });
+
+  // Days
+  const days = [];
+  DEFAULTS.days.forEach((_, i) => {
+    days.push({
+      title: document.getElementById('day-title-' + i)?.value || DEFAULTS.days[i].title,
+      desc:  document.getElementById('day-desc-'  + i)?.value || DEFAULTS.days[i].desc,
+    });
+  });
+  data.days = days;
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  showSaved();
+}
+
+// Reset everything
+function resetAll() {
+  if (!confirm('Weet u zeker dat u alle wijzigingen wilt herstellen?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  initAdmin();
+  showSaved('Hersteld!');
+}
+
+function showSaved(msg) {
+  const el = document.getElementById('saved-msg');
+  el.textContent = msg || 'Opgeslagen!';
+  el.style.display = 'inline';
+  setTimeout(() => el.style.display = 'none', 2500);
+}
+</script>
+</body>
+</html>
