@@ -519,7 +519,7 @@
       var textFields = { 'cms-hero-title':'hero-title','cms-hero-sub':'hero-sub','cms-prijs':'prijs','cms-intro-title':'intro-title','cms-intro-p1':'intro-p1','cms-intro-p2':'intro-p2','cms-hotel-naam':'hotel-naam','cms-hotel-desc':'hotel-desc','cms-telefoon':'telefoon','cms-email':'email','cms-openingstijden':'openingstijden' };
       Object.keys(textFields).forEach(function(domId) { var key=textFields[domId]; if(data[key]){var el=document.getElementById(domId);if(el)el.textContent=data[key];} });
       if(data.days){data.days.forEach(function(day,i){var t=document.getElementById('cms-day-title-'+i);var d=document.getElementById('cms-day-desc-'+i);if(t&&day.title)t.textContent=day.title;if(d&&day.desc)d.textContent=day.desc;});}
-      ['img-intro','img-dag2','img-dag3','img-dag4','img-dag5','img-dag6','img-dag7','img-hotel','img-ontbijt','img-fitness','img-rest','img-kamer1','img-kamer2','img-kamer3','img-schiphol','img-linate'].forEach(function(id){if(data[id]){var el=document.getElementById('cms-'+id);if(el)el.src=data[id];}});
+      ['img-intro','img-dag2','img-dag3','img-dag4','img-dag5','img-dag6','img-dag7','img-hotel','img-review','img-ontbijt','img-fitness','img-rest','img-kamer1','img-kamer2','img-kamer3','img-schiphol','img-linate'].forEach(function(id){if(data[id]){var el=document.getElementById('cms-'+id);if(el)el.src=data[id];}});
       if(data['img-hero']){var heroBg=document.getElementById('hero-bg');if(heroBg)heroBg.style.backgroundImage='url('+data['img-hero']+')';}
     } catch(e) {}
   })();
