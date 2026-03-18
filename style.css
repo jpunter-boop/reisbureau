@@ -1603,8 +1603,6 @@ footer {
    AZURE — LAYOUT OVERRIDES
    Tech / Dashboard stijl
    ============================================= */
---azure-neon:  #00d4ff;
---azure-mono: 'Courier New', Consolas, monospace;
 
 /* Body graph-paper textuur */
 [data-theme="azure"] body {
@@ -1983,3 +1981,46 @@ footer {
   [data-theme="neo"] .timeline { grid-template-columns: 1fr; }
   [data-theme="neo"] .hero-content h1 { font-size: clamp(3rem, 14vw, 5rem); }
 }
+
+/* =============================================
+   KLEURFIX: CRÈME THEMA — leesbaarheidsproblemen
+   Hardcoded witte kleuren → donkerbruin overschrijven
+   ============================================= */
+
+/* Section headers (light class) algemeen in crème */
+[data-theme="creme"] .section-header.light h2 { color: #1a1205; }
+[data-theme="creme"] .section-header.light p  { color: rgba(26,18,5,0.65); }
+
+/* Hero: price-pp en scroll-indicator */
+[data-theme="creme"] .price-amount { color: var(--gold-dark); }
+[data-theme="creme"] .price-pp     { color: rgba(26,18,5,0.60); }
+[data-theme="creme"] .hero-scroll  { color: rgba(26,18,5,0.40); }
+[data-theme="creme"] .hero-scroll svg { stroke: rgba(26,18,5,0.45); }
+
+/* Vervoer / baggage / transfer kaarten: wit tekst op witte achtergrond */
+[data-theme="creme"] .baggage-card h4,
+[data-theme="creme"] .transfer-card h4  { color: #1a1205; }
+[data-theme="creme"] .baggage-card li,
+[data-theme="creme"] .transfer-card li  { color: #3d3529; }
+[data-theme="creme"] .transfer-card p   { color: #3d3529; }
+[data-theme="creme"] .baggage-card,
+[data-theme="creme"] .transfer-card     { background: #ffffff; border-color: var(--cream-3); }
+
+/* Form placeholders */
+[data-theme="creme"] .form-group input::placeholder,
+[data-theme="creme"] .form-group select::placeholder,
+[data-theme="creme"] .form-group textarea::placeholder { color: rgba(26,18,5,0.30); }
+
+/* ─── Footer: donkere achtergrond (#1a1205) → lichte tekst ─── */
+[data-theme="creme"] footer                 { color: rgba(245,240,232,0.80); }
+[data-theme="creme"] .footer-brand .logo   { color: var(--gold-light); }
+[data-theme="creme"] .footer-brand p,
+[data-theme="creme"] .footer-col h4,
+[data-theme="creme"] .footer-col li,
+[data-theme="creme"] .footer-col li a,
+[data-theme="creme"] .footer-bottom p,
+[data-theme="creme"] .footer-links a       { color: rgba(245,240,232,0.65); }
+[data-theme="creme"] .footer-col li a:hover,
+[data-theme="creme"] .footer-links a:hover { color: rgba(245,240,232,0.95); }
+[data-theme="creme"] .footer-col h4        { color: rgba(245,240,232,0.90); border-bottom-color: rgba(245,240,232,0.12); }
+[data-theme="creme"] .cert-badge           { background: rgba(245,240,232,0.08); border-color: rgba(245,240,232,0.15); color: rgba(245,240,232,0.70); }
