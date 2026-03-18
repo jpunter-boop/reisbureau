@@ -1218,21 +1218,21 @@ footer {
   margin-left: 1rem;
 }
 .theme-btn {
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   border: 2px solid transparent;
   cursor: pointer;
   padding: 3px;
-  background: transparent;
+  background: rgba(255,255,255,0.08);
   transition: border-color 0.2s, transform 0.15s;
 }
 .theme-btn:hover { transform: scale(1.2); }
 .theme-btn.active { border-color: var(--gold); }
 .theme-dot { display: block; width: 100%; height: 100%; border-radius: 50%; }
-.theme-btn[data-theme="dark"]  .theme-dot { background: #0d0d1a; border: 1px solid #C9A84C; }
+.theme-btn[data-theme="dark"]  .theme-dot { background: #C9A84C; border: 1px solid #fff3; }
 .theme-btn[data-theme="creme"] .theme-dot { background: #f5f0e8; border: 1px solid #b8860b; }
-.theme-btn[data-theme="azure"] .theme-dot { background: #0d1f3c; border: 1px solid #4a9fd4; }
+.theme-btn[data-theme="azure"] .theme-dot { background: #4a9fd4; border: 1px solid #fff3; }
 
 /* =============================================
    THEMA 2 — CRÈME CLASSIQUE
