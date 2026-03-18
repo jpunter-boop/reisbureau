@@ -1235,6 +1235,60 @@ footer {
 .theme-btn[data-theme="azure"] .theme-dot { background: #4a9fd4; border: 1px solid #fff3; }
 
 /* =============================================
+   SWIRL GRADIENT — hero animated blobs
+   ============================================= */
+@keyframes swirlRotate {
+  to { transform: rotate(360deg) scale(1.15); }
+}
+.swirl-wrap {
+  position: absolute;
+  inset: -50%;
+  animation: swirlRotate 28s linear infinite;
+  pointer-events: none;
+}
+.swirl-blob {
+  position: absolute;
+  width: 55%; height: 55%;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  filter: blur(90px);
+  opacity: 0.38;
+}
+.swirl-1 { top: 15%; left: 25%;  background: radial-gradient(circle, var(--swirl-a), transparent 65%); }
+.swirl-2 { bottom: 15%; right: 20%; background: radial-gradient(circle, var(--swirl-b), transparent 65%); }
+.swirl-3 { top: 45%; left: 45%;  background: radial-gradient(circle, var(--swirl-c), transparent 65%); animation-delay: -9s; }
+
+/* Swirl kleuren per thema */
+:root          { --swirl-a: #C9A84C; --swirl-b: #4a2c8a; --swirl-c: #1a3060; }
+[data-theme="creme"] { --swirl-a: #d4a017; --swirl-b: #e8c4a0; --swirl-c: #c8b098; }
+[data-theme="azure"] { --swirl-a: #4a9fd4; --swirl-b: #1a6bb0; --swirl-c: #00d4ff; }
+
+/* =============================================
+   TWINKLE PARTICLES — booking knop
+   ============================================= */
+@keyframes twinkle {
+  from { opacity: var(--twinkle-amount, 0.5); transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1.3); }
+}
+@keyframes fadeToTransparent {
+  0%   { opacity: 1; }
+  100% { opacity: 0; transform: scale(0.1); }
+}
+.particle {
+  position: absolute;
+  pointer-events: none;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation:
+    twinkle var(--twinkle-duration, 0.5s) infinite alternate ease-in-out,
+    fadeToTransparent var(--fade-duration, 900ms) forwards;
+  z-index: 10;
+  box-shadow: 0 0 4px 1px var(--gold);
+}
+#submit-btn { position: relative; overflow: visible; }
+
+/* =============================================
    THEMA 2 — CRÈME CLASSIQUE
    Alle donkere secties worden warm ivoor
    ============================================= */
@@ -1333,6 +1387,20 @@ footer {
 /* Footer crème */
 [data-theme="creme"] footer { background: #1a1205; }
 
+/* Crème — look & feel: ronder, zachter, redactioneel */
+[data-theme="creme"] { --radius: 16px; --radius-lg: 28px; }
+[data-theme="creme"] .day-card,
+[data-theme="creme"] .feature-card,
+[data-theme="creme"] .usp-card,
+[data-theme="creme"] .room-card,
+[data-theme="creme"] .flight-card,
+[data-theme="creme"] .transfer-card { border-radius: 20px; }
+[data-theme="creme"] .btn-primary,
+[data-theme="creme"] .btn-secondary,
+[data-theme="creme"] .btn-nav { border-radius: 40px; }
+[data-theme="creme"] .section-tag { border-radius: 40px; border: 1px solid currentColor; padding: 0.25rem 0.85rem; }
+[data-theme="creme"] h2 { letter-spacing: 0.03em; font-style: italic; }
+
 /* =============================================
    THEMA 3 — AZURRO MILANO
    Mediterranean navy + azuurblauw accenten
@@ -1408,3 +1476,24 @@ footer {
 
 /* Footer donker navy */
 [data-theme="azure"] footer { background: #060f1e; }
+
+/* Azure — look & feel: scherp, tech, max glassmorphism + neon glow */
+[data-theme="azure"] { --radius: 3px; --radius-lg: 6px; }
+[data-theme="azure"] .day-card,
+[data-theme="azure"] .feature-card,
+[data-theme="azure"] .flight-card,
+[data-theme="azure"] .transfer-card {
+  border-radius: 3px;
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(74,159,212,0.30);
+}
+[data-theme="azure"] .btn-primary {
+  border-radius: 3px;
+  box-shadow: 0 0 18px rgba(74,159,212,0.45), 0 0 32px rgba(74,159,212,0.20);
+}
+[data-theme="azure"] .btn-primary:hover {
+  box-shadow: 0 0 28px rgba(74,159,212,0.65), 0 0 48px rgba(74,159,212,0.30);
+}
+[data-theme="azure"] .btn-secondary { border-radius: 3px; }
+[data-theme="azure"] h2 { letter-spacing: 0.07em; }

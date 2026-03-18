@@ -132,6 +132,29 @@ document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(
 
 // =============================================
 // FORM SUBMISSION
+// ── Twinkle particles — booking knop ──────────
+const submitBtn = document.getElementById('submit-btn');
+if (submitBtn) {
+  let particleInterval = null;
+  function spawnParticle() {
+    const p = document.createElement('span');
+    p.className = 'particle';
+    const x = Math.random() * (submitBtn.offsetWidth + 16) - 8;
+    const y = Math.random() * (submitBtn.offsetHeight + 16) - 8;
+    p.style.cssText = `left:${x}px;top:${y}px;` +
+      `--twinkle-amount:${(0.3 + Math.random() * 0.5).toFixed(2)};` +
+      `--twinkle-duration:${(0.25 + Math.random() * 0.45).toFixed(2)}s;` +
+      `--fade-duration:${680 + Math.floor(Math.random() * 420)}ms`;
+    submitBtn.appendChild(p);
+    setTimeout(() => p.remove(), 1100);
+  }
+  submitBtn.addEventListener('mouseenter', () => {
+    spawnParticle();
+    particleInterval = setInterval(() => { spawnParticle(); spawnParticle(); }, 160);
+  });
+  submitBtn.addEventListener('mouseleave', () => clearInterval(particleInterval));
+}
+
 // =============================================
 const form = document.getElementById('booking-form-el');
 if (form) {
