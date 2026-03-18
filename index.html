@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ontdek het Tijdloze Milaan | Reisbureau</title>
+  <title>Ontdek het Tijdloze Milaan | BellaViaggi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,16 +14,19 @@
   <!-- NAVIGATION -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
-      <a href="#" class="logo">
-        <span>BellaViaggi</span>
-      </a>
-      <ul class="nav-links">
+      <a href="#" class="logo">BellaViaggi</a>
+      <ul class="nav-links" id="nav-links">
         <li><a href="#overzicht">Reis</a></li>
         <li><a href="#programma">Programma</a></li>
         <li><a href="#hotel">Hotel</a></li>
         <li><a href="#vervoer">Vervoer</a></li>
         <li><a href="#boeken" class="btn-nav">Boek nu</a></li>
       </ul>
+      <div class="theme-switcher" aria-label="Kies stijlthema">
+        <button class="theme-btn active" data-theme="dark"  title="Milaan Nacht"><span class="theme-dot"></span></button>
+        <button class="theme-btn"        data-theme="creme" title="Crème Classique"><span class="theme-dot"></span></button>
+        <button class="theme-btn"        data-theme="azure" title="Azurro Milano"><span class="theme-dot"></span></button>
+      </div>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -32,10 +35,14 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-bg" id="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="hero-label">Pakketreis · 8 dagen · 7 nachten</p>
-      <h1 id="cms-hero-title">Ontdek het<br>Tijdloze Milaan</h1>
+      <h1>
+        Ontdek het
+        <span class="gold-text" id="cms-hero-title">Tijdloze Milaan</span>
+      </h1>
       <p class="hero-sub" id="cms-hero-sub">Een volledig verzorgde culturele reis voor de levensgenieter die houdt van kwaliteit, gemak en Italiaanse klasse.</p>
       <div class="hero-badges">
         <span class="badge">Vlucht inbegrepen</span>
@@ -44,7 +51,6 @@
         <span class="badge">Ontbijt inbegrepen</span>
       </div>
       <div class="hero-price">
-
         <span class="price-amount" id="cms-prijs">€1.073</span>
         <span class="price-pp">per persoon</span>
       </div>
@@ -55,106 +61,64 @@
     </div>
     <div class="hero-scroll">
       <span>Scroll</span>
-      <div class="scroll-line"></div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
   </section>
 
   <!-- OVERZICHT STRIP -->
   <section class="strip" id="overzicht">
-    <div class="strip-item">
-      <div class="strip-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      </div>
-      <div>
-        <strong>Reisdatum</strong>
-        <span>2 – 9 maart</span>
-      </div>
+    <div class="strip-item" data-reveal="up">
+      <div class="strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div><strong>Reisdatum</strong><span>2 – 9 maart</span></div>
     </div>
-    <div class="strip-item">
-      <div class="strip-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      </div>
-      <div>
-        <strong>Bestemming</strong>
-        <span>Milaan, Italië</span>
-      </div>
+    <div class="strip-item" data-reveal="up" style="transition-delay:0.1s">
+      <div class="strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <div><strong>Bestemming</strong><span>Milaan, Italië</span></div>
     </div>
-    <div class="strip-item">
-      <div class="strip-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-      </div>
-      <div>
-        <strong>Duur</strong>
-        <span>8 dagen / 7 nachten</span>
-      </div>
+    <div class="strip-item" data-reveal="up" style="transition-delay:0.2s">
+      <div class="strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></div>
+      <div><strong>Duur</strong><span>8 dagen / 7 nachten</span></div>
     </div>
-    <div class="strip-item">
-      <div class="strip-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-      </div>
-      <div>
-        <strong>Vertrek</strong>
-        <span>Amsterdam Schiphol</span>
-      </div>
+    <div class="strip-item" data-reveal="up" style="transition-delay:0.3s">
+      <div class="strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
+      <div><strong>Vertrek</strong><span>Amsterdam Schiphol</span></div>
     </div>
-    <div class="strip-item">
-      <div class="strip-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-      </div>
-      <div>
-        <strong>Doelgroep</strong>
-        <span>Levensgenieters 50+</span>
-      </div>
+    <div class="strip-item" data-reveal="up" style="transition-delay:0.4s">
+      <div class="strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <div><strong>Doelgroep</strong><span>Levensgenieters 50+</span></div>
     </div>
   </section>
 
   <!-- INTRODUCTIE -->
-  <section class="intro section">
+  <section class="intro section" id="intro">
     <div class="container">
       <div class="intro-grid">
-        <div class="intro-text">
+        <div class="intro-text" data-reveal="left">
           <span class="section-tag">Waarom deze reis?</span>
           <h2 id="cms-intro-title">Een zorgeloze<br>Cultuurreis</h2>
           <p id="cms-intro-p1">Milaan is dé stad waar historische pracht en Italiaanse klasse samenkomen. Wij hebben een exclusieve pakketreis samengesteld die volledig draait om kwaliteit, gemak en gastvrijheid.</p>
           <p id="cms-intro-p2">We begrijpen dat u onbezorgd wilt genieten. Daarom hebben wij alle logistiek al voor u uitgedacht — van de vluchttijden tot de beste looproutes door de stad. We reizen in een aangenaam tempo, zodat er naast de culturele excursies genoeg ruimte overblijft voor een goede Italiaanse espresso.</p>
           <div class="usps">
-            <div class="usp glow-card">
-              <div class="usp-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </div>
-              <div>
-                <strong>Volledige ontzorging</strong>
-                <p>Vluchten, transfers, hotel en excursies — alles vooraf geregeld.</p>
-              </div>
+            <div class="usp">
+              <div class="usp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div><strong>Volledige ontzorging</strong><p>Vluchten, transfers, hotel en excursies — alles vooraf geregeld.</p></div>
             </div>
-            <div class="usp glow-card">
-              <div class="usp-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22V12h6v10M8 7h.01M12 7h.01M16 7h.01M8 12h.01M16 12h.01"/></svg>
-              </div>
-              <div>
-                <strong>Comfortabel verblijf</strong>
-                <p>Centraal gelegen 4-sterrenhotel, geselecteerd op toegankelijkheid.</p>
-              </div>
+            <div class="usp">
+              <div class="usp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22V12h6v10M8 7h.01M12 7h.01M16 7h.01M8 12h.01M16 12h.01"/></svg></div>
+              <div><strong>Comfortabel verblijf</strong><p>Centraal gelegen 4-sterrenhotel, geselecteerd op toegankelijkheid.</p></div>
             </div>
-            <div class="usp glow-card">
-              <div class="usp-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              </div>
-              <div>
-                <strong>Persoonlijke beleving</strong>
-                <p>Een programma op maat, met oog voor detail, cultuur en ontspanning.</p>
-              </div>
+            <div class="usp">
+              <div class="usp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              <div><strong>Persoonlijke beleving</strong><p>Een programma op maat, met oog voor detail, cultuur en ontspanning.</p></div>
             </div>
           </div>
         </div>
-        <div class="intro-image">
-          <div class="image-card duomo-card">
-            <div class="image-card-inner">
-              <img id="cms-img-intro" src="images/odt_image12.png" alt="Milaanse tram" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" />
-              <div class="image-caption">
-                <h4>Milaan per tram</h4>
-                <p>Sfeervolle stad, overal bereikbaar</p>
-              </div>
+        <div class="intro-image" data-reveal="right">
+          <div class="image-card">
+            <img id="cms-img-intro" src="images/odt_image12.png" alt="Milaanse tram" />
+            <div class="image-caption">
+              <h4>Milaan per tram</h4>
+              <p>Sfeervolle stad, overal bereikbaar</p>
             </div>
           </div>
         </div>
@@ -165,175 +129,127 @@
   <!-- PROGRAMMA -->
   <section class="programma section" id="programma">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header light" data-reveal="up">
         <span class="section-tag">8 Dagen vol beleving</span>
         <h2>Uw Dagprogramma</h2>
         <p>Elke dag staat in het teken van de mooiste aspecten van Milaan — cultuur, gastronomie, mode en natuur.</p>
       </div>
-
       <div class="timeline">
 
-        <div class="timeline-item">
-          <div class="day-marker">
-            <span class="day-num">1</span>
-            <span class="day-date">Ma 2 mrt</span>
-          </div>
-          <div class="day-card glow-card">
-            <div class="day-card-header arrival">
+        <div class="timeline-item" data-reveal="left">
+          <div class="day-marker"><span class="day-num">1</span><span class="day-date">Ma 2 mrt</span></div>
+          <div class="day-card">
+            <div class="day-card-header">
               <div class="day-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><polygon points="9 22 15 16 13 16 13 10 7 10 7 16 5 16 9 22"/></svg></div>
               <h3 id="cms-day-title-0">Aankomst Milaan &amp; Aperitivo</h3>
             </div>
             <div class="day-card-body">
               <p id="cms-day-desc-0">Na een hartelijk welkom en de check-in heeft u de tijd om uw koffer uit te pakken en bij te komen. We sluiten de middag ontspannen af in de rustige hoteltuin met een klassieke Milanese aperitivo — een goed glas wijn met verfijnde hapjes. De perfecte, zorgeloze start van uw verblijf.</p>
-              <div class="day-details">
-                <span class="detail">17:00 – Aperitivo hoteltuin</span>
-              </div>
+              <div class="day-details"><span class="detail">17:00 – Aperitivo hoteltuin</span></div>
             </div>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div class="day-marker">
-            <span class="day-num">2</span>
-            <span class="day-date">Di 3 mrt</span>
-          </div>
-          <div class="day-card glow-card">
-            <div class="day-card-header culture">
+        <div class="timeline-item" data-reveal="right">
+          <div class="day-marker"><span class="day-num">2</span><span class="day-date">Di 3 mrt</span></div>
+          <div class="day-card">
+            <div class="day-card-header">
               <div class="day-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="11"/><line x1="6" y1="20" x2="6" y2="11"/><path d="M2 20h20M12 20V4l-6 7h12l-6-7z"/></svg></div>
               <h3 id="cms-day-title-1">Duomo di Milano &amp; de Dakterrassen</h3>
             </div>
             <div class="day-card-img"><img id="cms-img-dag2" src="images/odt_image13.png" alt="Duomo di Milano" /></div>
             <div class="day-card-body">
               <p id="cms-day-desc-1">Ontdek het kloppende hart en hét symbool van de stad: de indrukwekkende Duomo di Milano. Met het complete toegangsticket heeft u toegang tot alle delen van deze 600 jaar oude kathedraal. Bewonder de gebrandschilderde ramen en het bijbehorende museum. Het hoogtepunt? De spectaculaire dakterrassen met panoramisch uitzicht over de stad.</p>
-              <div class="day-details">
-                <span class="detail">14:00 – P.za del Duomo</span>
-                <span class="detail">Tram 12/14 naar Piazza del Duomo</span>
-              </div>
+              <div class="day-details"><span class="detail">14:00 – P.za del Duomo</span><span class="detail">Tram 12/14 naar Piazza del Duomo</span></div>
             </div>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div class="day-marker">
-            <span class="day-num">3</span>
-            <span class="day-date">Wo 4 mrt</span>
-          </div>
-          <div class="day-card glow-card">
-            <div class="day-card-header art">
+        <div class="timeline-item" data-reveal="left">
+          <div class="day-marker"><span class="day-num">3</span><span class="day-date">Wo 4 mrt</span></div>
+          <div class="day-card">
+            <div class="day-card-header">
               <div class="day-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 011.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div>
               <h3 id="cms-day-title-2">Het Laatste Avondmaal</h3>
             </div>
             <div class="day-card-img"><img id="cms-img-dag3" src="images/odt_image14.png" alt="Het Laatste Avondmaal" /></div>
             <div class="day-card-body">
               <p id="cms-day-desc-2">Beleef een onvergetelijke ochtend in het teken van de Italiaanse Renaissance. Onder begeleiding van een deskundige gids bezoekt u de kerk Santa Maria delle Grazie, waar u het wereldberoemde fresco van Leonardo da Vinci bewondert. De toegangstickets zijn reeds voor u gereserveerd — geen wachtrijen.</p>
-              <div class="day-details">
-                <span class="detail">11:00 – Santa Maria delle Grazie</span>
-                <span class="detail">Tram naar Cadorna, dan 5-10 min. lopen</span>
-              </div>
+              <div class="day-details"><span class="detail">11:00 – Santa Maria delle Grazie</span><span class="detail">Tram naar Cadorna, dan 5-10 min. lopen</span></div>
             </div>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div class="day-marker">
-            <span class="day-num">4</span>
-            <span class="day-date">Do 5 mrt</span>
-          </div>
-          <div class="day-card glow-card">
-            <div class="day-card-header nature">
+        <div class="timeline-item" data-reveal="right">
+          <div class="day-marker"><span class="day-num">4</span><span class="day-date">Do 5 mrt</span></div>
+          <div class="day-card">
+            <div class="day-card-header">
               <div class="day-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg></div>
               <h3 id="cms-day-title-3">Como, Bellagio &amp; Lugano</h3>
             </div>
             <div class="day-card-img"><img id="cms-img-dag4" src="images/odt_image15.png" alt="Comomeer Bellagio" /></div>
             <div class="day-card-body">
               <p id="cms-day-desc-3">Tijdens deze indrukwekkende dagtocht verlaat u de stad voor de adembenemende natuur van de Alpen. U bezoekt het schilderachtige Como, per boot reist u naar het wereldberoemde Bellagio — de 'parel van het Comomeer'. Als kers op de taart steekt u de grens over naar het Zwitserse Lugano.</p>
-              <div class="day-details">
-                <span class="detail">08:45 – Piazza IV Novembre</span>
-                <span class="detail">Gehele dag (ca. 10 uur)</span>
-              </div>
+              <div class="day-details"><span class="detail">08:45 – Piazza IV Novembre</span><span class="detail">Gehele dag (ca. 10 uur)</span></div>
             </div>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div class="day-marker">
-            <span class="day-num">5</span>
-            <span class="day-date">Vr 6 mrt</span>
-          </div>
-          <div class="day-card glow-card">
-            <div class="day-card-header opera">
+        <div class="timeline-item" data-reveal="left">
+          <div class="day-marker"><span class="day-num">5</span><span class="day-date">Vr 6 mrt</span></div>
+          <div class="day-card">
+            <div class="day-card-header">
               <div class="day-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
               <h3 id="cms-day-title-4">Teatro alla Scala</h3>
             </div>
             <div class="day-card-img"><img id="cms-img-dag5" src="images/odt_image16.png" alt="Teatro alla Scala" /></div>
             <div class="day-card-body">
               <p id="cms-day-desc-4">Stap in de wereld van de opera met een exclusieve rondleiding door het wereldberoemde Teatro alla Scala. Bewonder het schitterende interieur en treed in de voetsporen van Luciano Pavarotti en Maria Callas. In het museum krijgt u een uniek kijkje achter de schermen met antieke instrumenten, kostuums en decorontwerpen.</p>
-              <div class="day-details">
-                <span class="detail">13:00 – V. Filodrammatici 2</span>
-                <span class="detail">Tram naar centrum, kort lopen</span>
-              </div>
+              <div class="day-details"><span class="detail">13:00 – V. Filodrammatici 2</span><span class="detail">Tram naar centrum, kort lopen</span></div>
             </div>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div class="day-marker">
-            <span class="day-num">6</span>
-            <span class="day-date">Za 7 mrt</span>
-          </div>
-          <div class="day-card glow-card">
-            <div class="day-card-header food">
+        <div class="timeline-item" data-reveal="right">
+          <div class="day-marker"><span class="day-num">6</span><span class="day-date">Za 7 mrt</span></div>
+          <div class="day-card">
+            <div class="day-card-header">
               <div class="day-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
               <h3 id="cms-day-title-5">Kookworkshop in een Kunstgalerie</h3>
             </div>
             <div class="day-card-img"><img id="cms-img-dag6" src="images/odt_image17.png" alt="Kookworkshop Milaan" /></div>
             <div class="day-card-body">
               <p id="cms-day-desc-5">Dompel u onder in de authentieke Italiaanse gastvrijheid in een prachtig 16e-eeuws pand. Een lokale familie deelt gekoesterde familiegeheimen. U leert verse pasta, ravioli en klassieke tiramisù bereiden, omringd door een indrukwekkende kunstcollectie. Afsluiting met huisgemaakte limoncello.</p>
-              <div class="day-details">
-                <span class="detail">16:45 – Via Giuseppe Dezza 47</span>
-                <span class="detail">Biologische wijn inbegrepen</span>
-              </div>
+              <div class="day-details"><span class="detail">16:45 – Via Giuseppe Dezza 47</span><span class="detail">Biologische wijn inbegrepen</span></div>
             </div>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div class="day-marker">
-            <span class="day-num">7</span>
-            <span class="day-date">Zo 8 mrt</span>
-          </div>
-          <div class="day-card glow-card">
-            <div class="day-card-header fashion">
+        <div class="timeline-item" data-reveal="left">
+          <div class="day-marker"><span class="day-num">7</span><span class="day-date">Zo 8 mrt</span></div>
+          <div class="day-card">
+            <div class="day-card-header">
               <div class="day-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9 6 3z"/><path d="M11 3L8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg></div>
               <h3 id="cms-day-title-6">Milano Fashion Tour</h3>
             </div>
             <div class="day-card-img"><img id="cms-img-dag7" src="images/odt_image18.png" alt="Milano Fashion Tour" /></div>
             <div class="day-card-body">
               <p id="cms-day-desc-6">Tijdens deze exclusieve privérondleiding ontdekt u het hart van de Italiaanse mode in het beroemde Quadrilatero della Moda. Bezoek verborgen showrooms, authentieke ateliers en unieke designerstudio's. De tour is volledig aangepast aan uw persoonlijke wensen en interesses.</p>
-              <div class="day-details">
-                <span class="detail">10:00 – Via Alessandro Manzoni</span>
-                <span class="detail">1,5 uur exclusieve rondleiding</span>
-              </div>
+              <div class="day-details"><span class="detail">10:00 – Via Alessandro Manzoni</span><span class="detail">1,5 uur exclusieve rondleiding</span></div>
             </div>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div class="day-marker">
-            <span class="day-num">8</span>
-            <span class="day-date">Ma 9 mrt</span>
-          </div>
-          <div class="day-card glow-card">
-            <div class="day-card-header departure">
+        <div class="timeline-item" data-reveal="right">
+          <div class="day-marker"><span class="day-num">8</span><span class="day-date">Ma 9 mrt</span></div>
+          <div class="day-card">
+            <div class="day-card-header">
               <div class="day-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
               <h3 id="cms-day-title-7">Vrije Ochtend &amp; Vertrek</h3>
             </div>
             <div class="day-card-body">
               <p id="cms-day-desc-7">Na een rustig ontbijt geniet u van uw laatste ochtend in Milaan. Wandel op uw gemak naar de chique Via Montenapoleone voor exclusieve souvenirs of een laatste Italiaanse koffie op een terras. Om 13:30 brengt de privétransfer u comfortabel naar de luchthaven.</p>
-              <div class="day-details">
-                <span class="detail">13:30 – Transfer naar Milaan Linate</span>
-                <span class="detail">15:55 – Vlucht naar Amsterdam</span>
-              </div>
+              <div class="day-details"><span class="detail">13:30 – Transfer naar Milaan Linate</span><span class="detail">15:55 – Vlucht naar Amsterdam</span></div>
             </div>
           </div>
         </div>
@@ -345,70 +261,46 @@
   <!-- HOTEL -->
   <section class="hotel section" id="hotel">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header" data-reveal="up">
         <span class="section-tag">Uw verblijf</span>
         <h2 id="cms-hotel-naam">Leonardo Hotel<br>Milan City Center</h2>
       </div>
       <div class="hotel-grid">
-        <div class="hotel-visual">
-          <div class="hotel-img-main glow-card">
+        <div class="hotel-visual" data-reveal="left">
+          <div class="hotel-img-main">
             <div class="hotel-badge-stars">4 sterren</div>
-            <img id="cms-img-hotel" src="images/odt_image3.png" alt="Leonardo Hotel lobby" style="width:100%;height:100%;object-fit:cover;" />
+            <img id="cms-img-hotel" src="images/odt_image3.png" alt="Leonardo Hotel lobby" />
+          </div>
+          <div class="hotel-review-img">
+            <img id="cms-img-review" src="images/odt_image2.png" alt="Hotelreviews" />
           </div>
         </div>
-        <div class="hotel-info">
+        <div class="hotel-info" data-reveal="right">
           <p class="hotel-desc" id="cms-hotel-desc">Het Leonardo Hotel Milan City Center is een elegant viersterrenhotel dat stijl en comfort perfect combineert. Met een klassieke uitstraling ligt het hotel in het hart van de stad, tussen Corso Sempione en Porta Garibaldi. Met de tram bent u binnen 10 minuten bij de Duomo en de beroemde Scala.</p>
-
-          <div class="rating-block glow-card">
+          <div class="rating-block">
             <div class="rating-main">
-              <span class="rating-num">8.4</span>
+              <span class="rating-num" data-count="8.4">0</span>
               <span class="rating-label">Uitstekend</span>
             </div>
             <div class="rating-details">
-              <div class="rating-row"><span>Locatie</span><div class="rating-bar"><div style="width:82%"></div></div><span>8.2</span></div>
-              <div class="rating-row"><span>Service</span><div class="rating-bar"><div style="width:86%"></div></div><span>8.6</span></div>
-              <div class="rating-row"><span>Ontbijt</span><div class="rating-bar"><div style="width:95%"></div></div><span>9.5</span></div>
-              <div class="rating-row"><span>Netheid</span><div class="rating-bar"><div style="width:88%"></div></div><span>8.8</span></div>
-              <div class="rating-row"><span>Kamers</span><div class="rating-bar"><div style="width:81%"></div></div><span>8.1</span></div>
+              <div class="rating-row"><span>Locatie</span><div class="rating-bar"><div data-width="82"></div></div><span>8.2</span></div>
+              <div class="rating-row"><span>Service</span><div class="rating-bar"><div data-width="86"></div></div><span>8.6</span></div>
+              <div class="rating-row"><span>Ontbijt</span><div class="rating-bar"><div data-width="95"></div></div><span>9.5</span></div>
+              <div class="rating-row"><span>Netheid</span><div class="rating-bar"><div data-width="88"></div></div><span>8.8</span></div>
+              <div class="rating-row"><span>Kamers</span><div class="rating-bar"><div data-width="81"></div></div><span>8.1</span></div>
             </div>
           </div>
-
           <div class="facilities-grid">
-            <div class="facility glow-card">
-              <img id="cms-img-ontbijt" src="images/odt_image6.png" alt="Ontbijtbuffet" class="facility-img" />
-              <strong>Ontbijtbuffet</strong>
-              <small>Ma-vr 07:00-10:00<br>Weekend 07:00-11:00</small>
-            </div>
-            <div class="facility glow-card">
-              <img id="cms-img-fitness" src="images/odt_image5.png" alt="Fitnessruimte" class="facility-img" />
-              <strong>Fitnessruimte</strong>
-              <small>Dagelijks 07:00-23:00<br>Technogym apparatuur</small>
-            </div>
-            <div class="facility glow-card">
-              <img id="cms-img-rest" src="images/odt_image4.png" alt="Restaurant Don Vincè" class="facility-img" />
-              <strong>Restaurant</strong>
-              <small>Don Vincè – Napolitaanse<br>keuken met moderne twist</small>
-            </div>
-            <div class="facility glow-card">
-              <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="17" cy="5" r="2"/><path d="M16 10H8l-2 5h12l-2-5z"/><path d="M9 15l-1 5h8l-1-5"/><path d="M12 10V3"/></svg></div>
-              <strong>Toegankelijk</strong>
-              <small>Lift, drempelvrij,<br>brede gangen</small>
-            </div>
-            <div class="facility glow-card">
-              <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg></div>
-              <strong>Gratis Wi-Fi</strong>
-              <small>Snel en stabiel<br>in het hele hotel</small>
-            </div>
-            <div class="facility glow-card">
-              <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
-              <strong>Buitenterras</strong>
-              <small>Rustige hoteltuin<br>&amp; cocktailbar</small>
-            </div>
+            <div class="facility"><img id="cms-img-ontbijt" src="images/odt_image6.png" alt="Ontbijtbuffet" class="facility-img" /><strong>Ontbijtbuffet</strong><small>Ma-vr 07:00-10:00<br>Weekend 07:00-11:00</small></div>
+            <div class="facility"><img id="cms-img-fitness" src="images/odt_image5.png" alt="Fitnessruimte" class="facility-img" /><strong>Fitnessruimte</strong><small>Dagelijks 07:00-23:00<br>Technogym apparatuur</small></div>
+            <div class="facility"><img id="cms-img-rest" src="images/odt_image4.png" alt="Restaurant Don Vincè" class="facility-img" /><strong>Restaurant</strong><small>Don Vincè – Napolitaanse<br>keuken met moderne twist</small></div>
+            <div class="facility"><div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="17" cy="5" r="2"/><path d="M16 10H8l-2 5h12l-2-5z"/><path d="M9 15l-1 5h8l-1-5"/><path d="M12 10V3"/></svg></div><strong>Toegankelijk</strong><small>Lift, drempelvrij,<br>brede gangen</small></div>
+            <div class="facility"><div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg></div><strong>Gratis Wi-Fi</strong><small>Snel en stabiel<br>in het hele hotel</small></div>
+            <div class="facility"><div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div><strong>Buitenterras</strong><small>Rustige hoteltuin<br>&amp; cocktailbar</small></div>
           </div>
         </div>
       </div>
-
-      <div class="room-section">
+      <div class="room-section" data-reveal="up">
         <h3>Uw kamer: Comfort Room</h3>
         <div class="room-photos">
           <img id="cms-img-kamer1" src="images/odt_image7.png" alt="Hotelkamer" />
@@ -416,36 +308,12 @@
           <img id="cms-img-kamer3" src="images/odt_image10.png" alt="Badkamer" />
         </div>
         <div class="room-features">
-          <div class="room-feature glow-card">
-            <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M22 4v16"/><rect x="2" y="8" width="20" height="8" rx="1"/><path d="M6 8V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg></div>
-            <strong>Slaapcomfort</strong>
-            <p>Keuze uit ruim tweepersoons- of twee losse bedden van hoge kwaliteit</p>
-          </div>
-          <div class="room-feature glow-card">
-            <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z"/><path d="M7 10s.5-3 5-3 5 3 5 3"/><path d="M7 14s.5 3 5 3 5-3 5-3"/><line x1="12" y1="7" x2="12" y2="17"/></svg></div>
-            <strong>Moderne badkamer</strong>
-            <p>Douche of bad, haardroger en gratis verzorgingsproducten</p>
-          </div>
-          <div class="room-feature glow-card">
-            <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/><circle cx="12" cy="12" r="5"/></svg></div>
-            <strong>Klimaatbeheersing</strong>
-            <p>Individueel regelbare airco en verwarming</p>
-          </div>
-          <div class="room-feature glow-card">
-            <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-            <strong>Entertainment</strong>
-            <p>Flatscreen-tv met internationale zenders, kluisje en minibar</p>
-          </div>
-          <div class="room-feature glow-card">
-            <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/></svg></div>
-            <strong>Koffie &amp; Thee</strong>
-            <p>Waterkoker op de kamer, dagelijks aangevuld</p>
-          </div>
-          <div class="room-feature glow-card">
-            <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg></div>
-            <strong>Rustige nachtrust</strong>
-            <p>Dubbel glas en volledig rookvrij hotel</p>
-          </div>
+          <div class="room-feature"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M22 4v16"/><rect x="2" y="8" width="20" height="8" rx="1"/><path d="M6 8V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg></div><strong>Slaapcomfort</strong><p>Keuze uit ruim tweepersoons- of twee losse bedden van hoge kwaliteit</p></div>
+          <div class="room-feature"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z"/><path d="M7 10s.5-3 5-3 5 3 5 3"/><path d="M7 14s.5 3 5 3 5-3 5-3"/><line x1="12" y1="7" x2="12" y2="17"/></svg></div><strong>Moderne badkamer</strong><p>Douche of bad, haardroger en gratis verzorgingsproducten</p></div>
+          <div class="room-feature"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/><circle cx="12" cy="12" r="5"/></svg></div><strong>Klimaatbeheersing</strong><p>Individueel regelbare airco en verwarming</p></div>
+          <div class="room-feature"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><strong>Entertainment</strong><p>Flatscreen-tv met internationale zenders, kluisje en minibar</p></div>
+          <div class="room-feature"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/></svg></div><strong>Koffie &amp; Thee</strong><p>Waterkoker op de kamer, dagelijks aangevuld</p></div>
+          <div class="room-feature"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg></div><strong>Rustige nachtrust</strong><p>Dubbel glas en volledig rookvrij hotel</p></div>
         </div>
       </div>
     </div>
@@ -454,78 +322,46 @@
   <!-- VERVOER -->
   <section class="vervoer section" id="vervoer">
     <div class="container">
-      <div class="section-header light">
+      <div class="section-header light" data-reveal="up">
         <span class="section-tag">Vluchten &amp; Transfer</span>
         <h2>Comfortabel Vervoer</h2>
         <p>Een directe vlucht naar Milaan Linate — de luchthaven die het dichtstbij het centrum ligt — en een privéchauffeur die u opvangt.</p>
       </div>
-
-      <div class="airport-photos">
+      <div class="airport-photos" data-reveal="up">
         <div class="airport-photo"><img id="cms-img-schiphol" src="images/odt_image11.png" alt="Amsterdam Schiphol" /><span>Amsterdam Schiphol</span></div>
-        <div class="airport-arrow">—</div>
+        <div class="airport-arrow">→</div>
         <div class="airport-photo"><img id="cms-img-linate" src="images/odt_image19.png" alt="Milano Linate" /><span>Milano Linate</span></div>
       </div>
-
       <div class="flight-cards">
-        <div class="flight-card glow-card">
+        <div class="flight-card" data-reveal="left">
           <div class="flight-direction">Heenreis</div>
           <div class="flight-route">
-            <div class="airport">
-              <span class="airport-code">AMS</span>
-              <span class="airport-name">Amsterdam Schiphol</span>
-              <span class="flight-time">13:40</span>
-              <span class="flight-date">Maandag 2 maart</span>
-            </div>
-            <div class="flight-line">
-              <div class="line"></div>
-              <span class="flight-direct">Directe vlucht</span>
-              <span class="flight-nr">U27827</span>
-            </div>
-            <div class="airport right">
-              <span class="airport-code">LIN</span>
-              <span class="airport-name">Milaan Linate</span>
-              <span class="flight-time">15:15</span>
-              <span class="flight-date">Aankomst</span>
-            </div>
+            <div class="airport"><span class="airport-code">AMS</span><span class="airport-name">Amsterdam Schiphol</span><span class="flight-time">13:40</span><span class="flight-date">Maandag 2 maart</span></div>
+            <div class="flight-line"><div class="line"></div><span class="flight-direct">Directe vlucht</span><span class="flight-nr">U27827</span></div>
+            <div class="airport right"><span class="airport-code">LIN</span><span class="airport-name">Milaan Linate</span><span class="flight-time">15:15</span><span class="flight-date">Aankomst</span></div>
           </div>
         </div>
-
-        <div class="flight-card glow-card">
+        <div class="flight-card" data-reveal="right">
           <div class="flight-direction">Terugreis</div>
           <div class="flight-route">
-            <div class="airport">
-              <span class="airport-code">LIN</span>
-              <span class="airport-name">Milaan Linate</span>
-              <span class="flight-time">15:55</span>
-              <span class="flight-date">Maandag 9 maart</span>
-            </div>
-            <div class="flight-line">
-              <div class="line"></div>
-              <span class="flight-direct">Directe vlucht</span>
-              <span class="flight-nr">U27828</span>
-            </div>
-            <div class="airport right">
-              <span class="airport-code">AMS</span>
-              <span class="airport-name">Amsterdam Schiphol</span>
-              <span class="flight-time">18:00</span>
-              <span class="flight-date">Aankomst</span>
-            </div>
+            <div class="airport"><span class="airport-code">LIN</span><span class="airport-name">Milaan Linate</span><span class="flight-time">15:55</span><span class="flight-date">Maandag 9 maart</span></div>
+            <div class="flight-line"><div class="line"></div><span class="flight-direct">Directe vlucht</span><span class="flight-nr">U27828</span></div>
+            <div class="airport right"><span class="airport-code">AMS</span><span class="airport-name">Amsterdam Schiphol</span><span class="flight-time">18:00</span><span class="flight-date">Aankomst</span></div>
           </div>
         </div>
       </div>
-
       <div class="baggage-transfer">
-        <div class="baggage-card">
+        <div class="baggage-card" data-reveal="left">
           <h4>Bagage</h4>
           <ul>
-            <li><strong>Ruimbagage:</strong> 1 stuk max. 15 kg per persoon <span class="included">inbegrepen</span></li>
+            <li><strong>Ruimbagage:</strong> 1 stuk max. 15 kg per persoon <span class="included-tag">inbegrepen</span></li>
             <li><strong>Persoonlijk item:</strong> 1 kleine handtas of rugzak onder de stoel</li>
             <li><strong>Luchthavenbelasting:</strong> Volledig inbegrepen in de reissom</li>
-            <li><strong>Grote handbagage:</strong> Trolley voor bakken boven de stoelen <span class="not-included">niet inbegrepen</span></li>
+            <li><strong>Grote handbagage:</strong> Trolley voor bakken boven de stoelen <span class="not-included-tag">niet inbegrepen</span></li>
             <li><strong>Stoelreservering:</strong> Optioneel tegen meerprijs</li>
           </ul>
         </div>
-        <div class="transfer-card">
+        <div class="transfer-card" data-reveal="right">
           <h4>Privétransfer</h4>
           <p>Bij aankomst op Milaan Linate staat een privéchauffeur klaar in de aankomsthal met een naambordje. U wordt in circa <strong>25 minuten</strong> rechtstreeks naar het Leonardo Hotel gebracht.</p>
           <ul>
@@ -540,10 +376,14 @@
   </section>
 
   <!-- INBEGREPEN / NIET INBEGREPEN -->
-  <section class="included section">
+  <section class="included-section" id="inbegrepen">
     <div class="container">
+      <div class="section-header" data-reveal="up">
+        <span class="section-tag">Overzicht</span>
+        <h2>Wat is inbegrepen?</h2>
+      </div>
       <div class="included-grid">
-        <div class="included-col yes">
+        <div class="included-col yes" data-reveal="left">
           <h3>Inbegrepen</h3>
           <ul>
             <li>Retourvlucht Amsterdam – Milaan (direct)</li>
@@ -563,7 +403,7 @@
             <li>Kluisje op de kamer</li>
           </ul>
         </div>
-        <div class="included-col no">
+        <div class="included-col no" data-reveal="right">
           <h3>Niet inbegrepen</h3>
           <ul>
             <li>Reis- en annuleringsverzekering</li>
@@ -581,70 +421,44 @@
 
   <!-- BOOKING / CTA -->
   <section class="boeken section" id="boeken">
+    <div class="boeken-bg"></div>
     <div class="container">
       <div class="boeken-inner">
-        <div class="boeken-text">
+        <div class="boeken-text" data-reveal="left">
           <span class="section-tag light">Klaar voor Milaan?</span>
           <h2>Boek uw<br>droomreis nu</h2>
           <p>Neem contact met ons op en wij regelen alles voor u. Van de eerste boeking tot de terugkomst — u hoeft nergens aan te denken.</p>
           <div class="contact-info">
             <div class="contact-item">
               <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.4 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-              <div>
-                <strong>Telefoon</strong>
-                <span id="cms-telefoon">020 – 123 45 67</span>
-              </div>
+              <div><strong>Telefoon</strong><span id="cms-telefoon">020 – 123 45 67</span></div>
             </div>
             <div class="contact-item">
               <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-              <div>
-                <strong>E-mail</strong>
-                <span id="cms-email">info@bellaviaggi.nl</span>
-              </div>
+              <div><strong>E-mail</strong><span id="cms-email">info@bellaviaggi.nl</span></div>
             </div>
             <div class="contact-item">
               <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div>
-              <div>
-                <strong>Openingstijden</strong>
-                <span id="cms-openingstijden">Ma-vr 09:00–17:30</span>
-              </div>
+              <div><strong>Openingstijden</strong><span id="cms-openingstijden">Ma-vr 09:00–17:30</span></div>
             </div>
           </div>
         </div>
-        <div class="boeken-form">
-          <form>
-            <h3>Vrijblijvende aanvraag</h3>
-            <div class="form-group">
-              <label>Voornaam</label>
-              <input type="text" placeholder="Uw voornaam" />
+        <div class="booking-form" data-reveal="right">
+          <form id="booking-form-el">
+            <div class="form-row">
+              <div class="form-group"><label>Voornaam</label><input type="text" placeholder="Uw voornaam" /></div>
+              <div class="form-group"><label>Achternaam</label><input type="text" placeholder="Uw achternaam" /></div>
             </div>
-            <div class="form-group">
-              <label>Achternaam</label>
-              <input type="text" placeholder="Uw achternaam" />
-            </div>
-            <div class="form-group">
-              <label>E-mailadres</label>
-              <input type="email" placeholder="uw@email.nl" />
-            </div>
-            <div class="form-group">
-              <label>Telefoonnummer</label>
-              <input type="tel" placeholder="06 – xx xx xx xx" />
-            </div>
+            <div class="form-group"><label>E-mailadres</label><input type="email" placeholder="uw@email.nl" /></div>
+            <div class="form-group"><label>Telefoonnummer</label><input type="tel" placeholder="06 – xx xx xx xx" /></div>
             <div class="form-group">
               <label>Aantal personen</label>
-              <select>
-                <option>1 persoon</option>
-                <option>2 personen</option>
-                <option>3 personen</option>
-                <option>4 personen</option>
-              </select>
+              <select><option>1 persoon</option><option>2 personen</option><option>3 personen</option><option>4 personen</option></select>
             </div>
-            <div class="form-group">
-              <label>Bericht (optioneel)</label>
-              <textarea placeholder="Heeft u speciale wensen of vragen?" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn-primary full">Verstuur aanvraag</button>
+            <div class="form-group"><label>Bericht (optioneel)</label><textarea placeholder="Heeft u speciale wensen of vragen?" rows="3"></textarea></div>
             <p class="form-note">U ontvangt binnen 24 uur een reactie van ons.</p>
+            <button type="submit" class="btn-primary" id="submit-btn" style="width:100%;justify-content:center;">Verstuur aanvraag</button>
+            <p class="form-success" id="form-success">✓ Aanvraag verstuurd! We nemen spoedig contact op.</p>
           </form>
         </div>
       </div>
@@ -652,13 +466,11 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
+  <footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="logo">
-            <span>BellaViaggi</span>
-          </div>
+          <a href="#" class="logo">BellaViaggi</a>
           <p>Uw specialist in zorgvuldig samengestelde pakketreizen naar de mooiste steden van Europa.</p>
           <div class="footer-certs">
             <span class="cert">SGR Erkend</span>
@@ -672,6 +484,7 @@
             <li><a href="#programma">Dagprogramma</a></li>
             <li><a href="#hotel">Hotel</a></li>
             <li><a href="#vervoer">Vervoer</a></li>
+            <li><a href="#inbegrepen">Inbegrepen</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -685,7 +498,8 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 BellaViaggi · Alle rechten voorbehouden · <a href="#">Privacybeleid</a> · <a href="#">Algemene voorwaarden</a></p>
+        <p>© 2026 BellaViaggi · Alle rechten voorbehouden</p>
+        <div class="footer-links"><a href="#">Privacybeleid</a><a href="#">Algemene voorwaarden</a></div>
       </div>
     </div>
   </footer>
@@ -695,59 +509,11 @@
   (function() {
     try {
       var data = JSON.parse(localStorage.getItem('bellaviaggi_cms') || '{}');
-
-      // Text fields
-      var textFields = {
-        'cms-hero-title':     'hero-title',
-        'cms-hero-sub':       'hero-sub',
-        'cms-prijs':          'prijs',
-        'cms-intro-title':    'intro-title',
-        'cms-intro-p1':       'intro-p1',
-        'cms-intro-p2':       'intro-p2',
-        'cms-hotel-naam':     'hotel-naam',
-        'cms-hotel-desc':     'hotel-desc',
-        'cms-telefoon':       'telefoon',
-        'cms-email':          'email',
-        'cms-openingstijden': 'openingstijden'
-      };
-      Object.keys(textFields).forEach(function(domId) {
-        var key = textFields[domId];
-        if (data[key]) {
-          var el = document.getElementById(domId);
-          if (el) el.textContent = data[key];
-        }
-      });
-
-      // Day program
-      if (data.days) {
-        data.days.forEach(function(day, i) {
-          var t = document.getElementById('cms-day-title-' + i);
-          var d = document.getElementById('cms-day-desc-' + i);
-          if (t && day.title) t.textContent = day.title;
-          if (d && day.desc)  d.textContent = day.desc;
-        });
-      }
-
-      // Regular images
-      var imgIds = ['img-intro','img-dag2','img-dag3','img-dag4','img-dag5',
-                    'img-dag6','img-dag7','img-hotel','img-ontbijt','img-fitness',
-                    'img-rest','img-kamer1','img-kamer2','img-kamer3',
-                    'img-schiphol','img-linate'];
-      imgIds.forEach(function(id) {
-        if (data[id]) {
-          var el = document.getElementById('cms-' + id);
-          if (el) el.src = data[id];
-        }
-      });
-
-      // Hero background image (CSS)
-      if (data['img-hero']) {
-        var hero = document.querySelector('.hero');
-        if (hero) {
-          hero.style.backgroundImage =
-            'linear-gradient(to bottom,rgba(0,0,0,.35) 0%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.55) 100%),url(' + data['img-hero'] + ')';
-        }
-      }
+      var textFields = { 'cms-hero-title':'hero-title','cms-hero-sub':'hero-sub','cms-prijs':'prijs','cms-intro-title':'intro-title','cms-intro-p1':'intro-p1','cms-intro-p2':'intro-p2','cms-hotel-naam':'hotel-naam','cms-hotel-desc':'hotel-desc','cms-telefoon':'telefoon','cms-email':'email','cms-openingstijden':'openingstijden' };
+      Object.keys(textFields).forEach(function(domId) { var key=textFields[domId]; if(data[key]){var el=document.getElementById(domId);if(el)el.textContent=data[key];} });
+      if(data.days){data.days.forEach(function(day,i){var t=document.getElementById('cms-day-title-'+i);var d=document.getElementById('cms-day-desc-'+i);if(t&&day.title)t.textContent=day.title;if(d&&day.desc)d.textContent=day.desc;});}
+      ['img-intro','img-dag2','img-dag3','img-dag4','img-dag5','img-dag6','img-dag7','img-hotel','img-ontbijt','img-fitness','img-rest','img-kamer1','img-kamer2','img-kamer3','img-schiphol','img-linate'].forEach(function(id){if(data[id]){var el=document.getElementById('cms-'+id);if(el)el.src=data[id];}});
+      if(data['img-hero']){var heroBg=document.getElementById('hero-bg');if(heroBg)heroBg.style.backgroundImage='url('+data['img-hero']+')';}
     } catch(e) {}
   })();
   </script>
