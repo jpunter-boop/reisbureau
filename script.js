@@ -53,6 +53,19 @@ document.querySelectorAll('.timeline-item, .day-card, .hotel-visual, .flight-car
   observer.observe(el);
 });
 
+// Cursor-following glow effect on cards
+document.querySelectorAll('.glow-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--glow-x', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--glow-y', (e.clientY - r.top) + 'px');
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.setProperty('--glow-x', '-999px');
+    card.style.setProperty('--glow-y', '-999px');
+  });
+});
+
 // Form submission
 const form = document.querySelector('.boeken-form form');
 if (form) {
