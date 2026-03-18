@@ -18,6 +18,19 @@
   });
 })();
 
+// ── Neo Milano: strip marquee duplicator ───────────────────────
+(function () {
+  const strip = document.querySelector('.strip');
+  if (!strip) return;
+  const track = document.createElement('div');
+  track.className = 'neo-strip-track';
+  // Verplaats alle strip-items naar track
+  Array.from(strip.children).forEach(child => track.appendChild(child));
+  strip.appendChild(track);
+  // Dupliceer inhoud voor naadloze loop
+  strip.appendChild(track.cloneNode(true));
+})();
+
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
@@ -139,13 +152,14 @@ if (submitBtn) {
   function spawnParticle() {
     const p = document.createElement('span');
     p.className = 'particle';
-    const x = Math.random() * (submitBtn.offsetWidth + 16) - 8;
-    const y = Math.random() * (submitBtn.offsetHeight + 16) - 8;
-    p.style.cssText = `left:${x}px;top:${y}px;` +
+    const rect = submitBtn.getBoundingClientRect();
+    const x = rect.left + Math.random() * (rect.width  + 20) - 10;
+    const y = rect.top  + Math.random() * (rect.height + 20) - 10;
+    p.style.cssText = `left:${x}px;top:${y}px;position:fixed;` +
       `--twinkle-amount:${(0.3 + Math.random() * 0.5).toFixed(2)};` +
       `--twinkle-duration:${(0.25 + Math.random() * 0.45).toFixed(2)}s;` +
       `--fade-duration:${680 + Math.floor(Math.random() * 420)}ms`;
-    submitBtn.appendChild(p);
+    document.body.appendChild(p);
     setTimeout(() => p.remove(), 1100);
   }
   submitBtn.addEventListener('mouseenter', () => {

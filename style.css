@@ -1275,7 +1275,7 @@ footer {
   100% { opacity: 0; transform: scale(0.1); }
 }
 .particle {
-  position: absolute;
+  position: fixed;
   pointer-events: none;
   width: 5px; height: 5px;
   border-radius: 50%;
@@ -1283,8 +1283,8 @@ footer {
   animation:
     twinkle var(--twinkle-duration, 0.5s) infinite alternate ease-in-out,
     fadeToTransparent var(--fade-duration, 900ms) forwards;
-  z-index: 10;
-  box-shadow: 0 0 4px 1px var(--gold);
+  z-index: 9999;
+  box-shadow: 0 0 5px 2px var(--gold);
 }
 #submit-btn { position: relative; overflow: visible; }
 
@@ -1497,3 +1497,489 @@ footer {
 }
 [data-theme="azure"] .btn-secondary { border-radius: 3px; }
 [data-theme="azure"] h2 { letter-spacing: 0.07em; }
+
+/* =============================================
+   CRÈME — LOOK & FEEL LAYOUT OVERRIDES
+   Redactioneel / Editorial Magazine stijl
+   ============================================= */
+
+/* Hero: groot, gecentreerd, italic */
+[data-theme="creme"] .hero-content { text-align: center; max-width: 840px; margin: 0 auto; }
+[data-theme="creme"] .hero-content::before {
+  content: '—  M I L A N O  —';
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.55em;
+  color: var(--gold-dark);
+  margin-bottom: 1.8rem;
+}
+[data-theme="creme"] .hero-content h1 {
+  font-style: italic;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  letter-spacing: -0.02em;
+}
+[data-theme="creme"] .hero-cta { justify-content: center; }
+[data-theme="creme"] .hero-badges { justify-content: center; }
+
+/* Section headers: gecentreerd met decoratieve lijn */
+[data-theme="creme"] .section-header {
+  text-align: center;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+[data-theme="creme"] .section-header::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--gold-dark);
+  margin: 1.6rem auto 0;
+}
+
+/* Timeline: gestapeld, marker bovenin (geen verticale lijn) */
+[data-theme="creme"] .timeline::before { display: none; }
+[data-theme="creme"] .timeline-item {
+  flex-direction: column;
+  gap: 0;
+  padding: 2.8rem 0;
+  border-bottom: 1px solid var(--cream-3);
+}
+[data-theme="creme"] .day-marker {
+  flex-direction: row;
+  align-items: center;
+  gap: 1.2rem;
+  width: auto;
+  padding: 0 0 1.2rem 0;
+}
+[data-theme="creme"] .day-num {
+  background: transparent;
+  border: 2px solid var(--gold-dark);
+  color: var(--gold-dark);
+  box-shadow: none;
+}
+[data-theme="creme"] .day-date { text-align: left; margin-top: 0; color: rgba(26,18,5,0.5); }
+[data-theme="creme"] .day-card {
+  width: 100%;
+  flex: unset;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+[data-theme="creme"] .day-card:hover { transform: none; box-shadow: none; }
+[data-theme="creme"] .day-card-header {
+  background: transparent;
+  border-bottom: 1px solid var(--cream-3);
+  padding: 0 0 1rem;
+}
+[data-theme="creme"] .day-card-header h3 { color: #1a1205; font-size: 1.3rem; font-style: italic; }
+[data-theme="creme"] .day-card-img { border-radius: 8px; overflow: hidden; max-height: 320px; }
+[data-theme="creme"] .day-card-body { padding: 1rem 0; }
+[data-theme="creme"] .day-card-body p { color: #3d3529; }
+
+/* Boeken: gecentreerd magazine kolom */
+[data-theme="creme"] .boeken-inner {
+  grid-template-columns: 1fr;
+  max-width: 700px;
+  margin: 0 auto;
+  gap: 2.5rem;
+}
+[data-theme="creme"] .boeken-text { text-align: center; }
+[data-theme="creme"] .boeken-text::before {
+  content: '\201C';
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 7rem;
+  line-height: 0.6;
+  color: var(--gold-dark);
+  opacity: 0.18;
+  margin-bottom: 0.5rem;
+}
+[data-theme="creme"] .contact-list { justify-content: center; }
+
+/* =============================================
+   AZURE — LAYOUT OVERRIDES
+   Tech / Dashboard stijl
+   ============================================= */
+--azure-neon:  #00d4ff;
+--azure-mono: 'Courier New', Consolas, monospace;
+
+/* Body graph-paper textuur */
+[data-theme="azure"] body {
+  background-image:
+    repeating-linear-gradient(0deg,  transparent, transparent 39px, rgba(74,159,212,0.04) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(74,159,212,0.04) 40px);
+  background-size: 40px 40px;
+}
+
+/* Hero: left-aligned, uppercase, technisch */
+[data-theme="azure"] .hero-content { text-align: left; max-width: 720px; }
+[data-theme="azure"] .hero-content h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 4.2rem);
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  font-style: normal;
+}
+[data-theme="azure"] .hero-label { font-family: Consolas, monospace; letter-spacing: 0.18em; font-size: 0.65rem; color: #00d4ff; }
+
+/* Strip: compact, links uitgelijnd, monospace labels */
+[data-theme="azure"] .strip-item { flex-direction: column; align-items: flex-start; padding: 1.3rem 1.5rem; }
+[data-theme="azure"] .strip-item strong { font-family: Consolas, monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; }
+[data-theme="azure"] .strip-item span { font-size: 1.05rem; font-weight: 600; color: #00d4ff; }
+
+/* Timeline: 4-koloms dashboard grid */
+[data-theme="azure"] .timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(74,159,212,0.14);
+  flex-direction: unset;
+}
+[data-theme="azure"] .timeline::before { display: none; }
+[data-theme="azure"] .timeline-item {
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  background: var(--dark-2);
+}
+[data-theme="azure"] .day-marker {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(74,159,212,0.08);
+  border-bottom: 1px solid rgba(74,159,212,0.20);
+}
+[data-theme="azure"] .day-num {
+  width: 26px; height: 26px;
+  font-size: 0.72rem;
+  border-radius: 3px;
+}
+[data-theme="azure"] .day-date { text-align: left; margin-top: 0; font-family: Consolas, monospace; font-size: 0.58rem; letter-spacing: 0.05em; }
+[data-theme="azure"] .day-card { border-radius: 0; border: none; }
+[data-theme="azure"] .day-card-img img { height: 120px; }
+[data-theme="azure"] .day-card-header { padding: 0.75rem 1rem; border-radius: 0; }
+[data-theme="azure"] .day-card-header h3 { font-size: 0.82rem; line-height: 1.35; }
+[data-theme="azure"] .day-card-body { padding: 0.75rem 1rem; }
+[data-theme="azure"] .day-card-body p { font-size: 0.75rem; line-height: 1.5; }
+
+/* Facilities: alle 6 in één rij */
+[data-theme="azure"] .facilities-grid { grid-template-columns: repeat(6, 1fr); }
+[data-theme="azure"] .facility { border-radius: 3px; }
+[data-theme="azure"] .facility strong,
+[data-theme="azure"] .facility small { font-family: Consolas, monospace; font-size: 0.62rem; }
+
+/* Form: monospace inputs */
+[data-theme="azure"] .form-group input,
+[data-theme="azure"] .form-group select,
+[data-theme="azure"] .form-group textarea { font-family: Consolas, monospace; font-size: 0.83rem; }
+
+/* Azure media queries (timeline terugval) */
+@media (max-width: 900px) {
+  [data-theme="azure"] .timeline { grid-template-columns: repeat(2, 1fr); }
+  [data-theme="azure"] .facilities-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  [data-theme="azure"] .timeline { grid-template-columns: 1fr; }
+}
+
+/* =============================================
+   THEMA 4 — NEO MILANO
+   2026 Bento Neon: animated mesh, bento grid,
+   oversized type, neon glow, conic borders
+   ============================================= */
+
+/* Nieuwe keyframes */
+@keyframes meshShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+@keyframes neonPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(155,93,229,0.4), 0 0 24px rgba(155,93,229,0.15); }
+  50%       { box-shadow: 0 0 24px rgba(155,93,229,0.8), 0 0 50px rgba(241,91,181,0.35), 0 0 80px rgba(0,245,255,0.10); }
+}
+@keyframes textShimmerNeo {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes borderRotate {
+  to { --border-angle: 360deg; }
+}
+@keyframes neoMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+[data-theme="neo"] {
+  --neo-bg:       #0e0618;
+  --neo-surface:  #160d2a;
+  --neo-violet:   #9b5de5;
+  --neo-pink:     #f15bb5;
+  --neo-cyan:     #00f5ff;
+  --gold:         #9b5de5;
+  --gold-light:   #c084fc;
+  --gold-dark:    #7c3aed;
+  --dark-1:       #0e0618;
+  --dark-2:       #160d2a;
+  --dark-3:       #1e1235;
+  --glass:        rgba(155,93,229,0.08);
+  --glass-border: rgba(155,93,229,0.22);
+  --glass-hover:  rgba(155,93,229,0.14);
+  --swirl-a:      #9b5de5;
+  --swirl-b:      #f15bb5;
+  --swirl-c:      #00f5ff;
+  --radius:       12px;
+  --radius-lg:    20px;
+  --text-light:   rgba(255,255,255,0.90);
+  --text-muted:   rgba(200,180,255,0.55);
+}
+
+/* Swirl intenser in Neo */
+[data-theme="neo"] .swirl-blob { opacity: 0.55; filter: blur(70px); }
+
+/* Body: animated mesh gradient */
+[data-theme="neo"] body {
+  background: linear-gradient(-45deg, #0e0618, #1a0533, #0d1b4b, #2d1065, #0e0618);
+  background-size: 400% 400%;
+  animation: meshShift 16s ease infinite;
+}
+
+/* Navbar */
+[data-theme="neo"] .navbar.scrolled {
+  background: rgba(14,6,24,0.93);
+  border-bottom: 1px solid rgba(155,93,229,0.25);
+  box-shadow: 0 0 30px rgba(155,93,229,0.10);
+}
+[data-theme="neo"] .nav-links a::after { background: var(--neo-violet); }
+
+/* Hero: ultra-oversized typografie */
+[data-theme="neo"] .hero-overlay {
+  background: linear-gradient(to bottom, rgba(14,6,24,0.30) 0%, rgba(14,6,24,0.08) 45%, rgba(14,6,24,0.90) 100%);
+}
+[data-theme="neo"] .hero-content { text-align: left; padding-left: 1vw; }
+[data-theme="neo"] .hero-content h1 {
+  font-size: clamp(3.5rem, 10vw, 9rem);
+  font-weight: 900;
+  line-height: 0.90;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+[data-theme="neo"] .hero-content h1 .gold-text {
+  background: linear-gradient(90deg, #9b5de5 0%, #f15bb5 35%, #00f5ff 65%, #9b5de5 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShimmerNeo 4s linear infinite;
+}
+[data-theme="neo"] .hero-label { color: var(--neo-cyan); letter-spacing: 0.3em; font-size: 0.62rem; }
+[data-theme="neo"] .badge { background: rgba(155,93,229,0.12); border-color: rgba(155,93,229,0.35); }
+
+/* Strip: neon ticker */
+[data-theme="neo"] .strip {
+  background: rgba(14,6,24,0.85);
+  border-top: 1px solid rgba(155,93,229,0.25);
+  border-bottom: 1px solid rgba(155,93,229,0.25);
+  overflow: hidden;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+[data-theme="neo"] .neo-strip-track {
+  display: flex;
+  flex-wrap: nowrap;
+  animation: neoMarquee 24s linear infinite;
+}
+[data-theme="neo"] .neo-strip-track:hover { animation-play-state: paused; }
+[data-theme="neo"] .strip-item { flex-shrink: 0; min-width: 220px; border-right: 1px solid rgba(155,93,229,0.15); }
+[data-theme="neo"] .strip-icon { background: rgba(155,93,229,0.12); }
+[data-theme="neo"] .strip-icon svg { stroke: var(--neo-violet); }
+[data-theme="neo"] .strip-item strong { color: var(--neo-cyan); letter-spacing: 0.25em; font-size: 0.58rem; }
+[data-theme="neo"] .strip-item span { color: #fff; }
+
+/* Timeline: Bento grid */
+[data-theme="neo"] .programma .container { max-width: 1400px; }
+[data-theme="neo"] .timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  flex-direction: unset;
+  position: static;
+}
+[data-theme="neo"] .timeline::before { display: none; }
+[data-theme="neo"] .timeline-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  gap: 0;
+  padding: 0;
+}
+
+/* Bento spanning */
+[data-theme="neo"] .timeline-item:nth-child(1) { grid-column: span 2; min-height: 360px; }
+[data-theme="neo"] .timeline-item:nth-child(3) { grid-row: span 2; }
+[data-theme="neo"] .timeline-item:nth-child(5) { grid-column: span 2; }
+[data-theme="neo"] .timeline-item:nth-child(7) { grid-column: span 2; }
+
+/* Day-marker als absolute overlay */
+[data-theme="neo"] .day-marker {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  z-index: 4;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  width: auto;
+  padding-top: 0;
+}
+[data-theme="neo"] .day-num {
+  width: 32px; height: 32px;
+  font-size: 0.78rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--neo-violet), var(--neo-pink));
+  color: #fff;
+  box-shadow: 0 0 12px rgba(155,93,229,0.55);
+}
+[data-theme="neo"] .day-date { color: rgba(255,255,255,0.65); font-size: 0.58rem; }
+
+/* Day-card als image-overlay bento cell */
+[data-theme="neo"] .day-card {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(155,93,229,0.22);
+  background: var(--neo-surface);
+}
+/* Animated conic border via pseudo (verschijnt bij hover) */
+[data-theme="neo"] .day-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 16px;
+  background: conic-gradient(from 0deg, #9b5de5, #f15bb5, #00f5ff, #9b5de5);
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.35s;
+  animation: borderRotate 3s linear infinite paused;
+}
+[data-theme="neo"] .day-card::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: 13px;
+  background: var(--neo-surface);
+  z-index: 1;
+}
+[data-theme="neo"] .day-card:hover::before { opacity: 1; animation-play-state: running; }
+[data-theme="neo"] .day-card:hover { animation: neonPulse 2s ease-in-out infinite; }
+
+/* Afbeelding vult de hele kaart */
+[data-theme="neo"] .day-card-img {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+[data-theme="neo"] .day-card-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+
+/* Header als gradient overlay onderaan */
+[data-theme="neo"] .day-card-header {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 3;
+  background: linear-gradient(to top, rgba(14,6,24,0.95) 0%, rgba(14,6,24,0.50) 60%, transparent 100%);
+  border-bottom: none;
+  border-radius: 0 0 14px 14px;
+  padding: 2.5rem 1.2rem 1rem;
+}
+[data-theme="neo"] .day-card-header h3 { color: #fff; font-size: 0.95rem; font-weight: 600; }
+[data-theme="neo"] .day-icon { display: none; }
+
+/* Body verbergen (bento = visual, geen tekst body) */
+[data-theme="neo"] .day-card-body { display: none; }
+
+/* Fallback voor kaarten zonder afbeelding */
+[data-theme="neo"] .day-card:not(:has(.day-card-img)) .day-card-header {
+  position: static;
+  background: transparent;
+  padding: 1.2rem;
+}
+[data-theme="neo"] .day-card:not(:has(.day-card-img)) .day-card-body { display: block; padding: 0.75rem 1.2rem; }
+
+/* Hotel */
+[data-theme="neo"] .hotel-img-main {
+  border: 1px solid rgba(155,93,229,0.30);
+  box-shadow: 0 0 40px rgba(155,93,229,0.20);
+}
+[data-theme="neo"] .rating-num { color: var(--neo-violet); }
+[data-theme="neo"] .rating-bar div { background: linear-gradient(to right, var(--neo-violet), var(--neo-cyan)); }
+[data-theme="neo"] .facility {
+  background: rgba(155,93,229,0.06);
+  border-color: rgba(155,93,229,0.18);
+}
+
+/* Booking form */
+[data-theme="neo"] .booking-form {
+  background: var(--neo-surface);
+  border: 1px solid rgba(155,93,229,0.25);
+  border-radius: 20px;
+  box-shadow: 0 0 60px rgba(155,93,229,0.12);
+}
+[data-theme="neo"] .form-group input,
+[data-theme="neo"] .form-group select,
+[data-theme="neo"] .form-group textarea {
+  background: rgba(155,93,229,0.06);
+  border-color: rgba(155,93,229,0.28);
+  color: #fff;
+}
+[data-theme="neo"] .form-group label { color: rgba(200,180,255,0.85); }
+
+/* Knoppen: neon gradient puls */
+[data-theme="neo"] .btn-primary {
+  background: linear-gradient(135deg, var(--neo-violet), var(--neo-pink));
+  border-radius: 6px;
+  box-shadow: 0 0 20px rgba(155,93,229,0.40);
+  animation: neonPulse 3s ease-in-out infinite;
+  color: #fff;
+}
+[data-theme="neo"] .btn-primary:hover {
+  background: linear-gradient(135deg, var(--neo-pink), var(--neo-cyan));
+  transform: translateY(-2px);
+}
+[data-theme="neo"] .btn-secondary { border-color: var(--neo-violet); color: var(--neo-violet); border-radius: 6px; }
+[data-theme="neo"] .btn-nav { background: var(--neo-violet); border-radius: 6px; }
+
+/* Particle kleur Neo */
+[data-theme="neo"] .particle {
+  background: var(--neo-cyan);
+  box-shadow: 0 0 6px 2px var(--neo-violet);
+}
+
+/* Footer Neo */
+[data-theme="neo"] footer { background: #07030e; }
+[data-theme="neo"] .footer-brand .logo { color: var(--neo-violet); }
+
+/* Theme dot Neo */
+.theme-btn[data-theme="neo"] .theme-dot {
+  background: linear-gradient(135deg, #9b5de5, #f15bb5);
+  border: 1px solid rgba(155,93,229,0.55);
+}
+
+/* Neo bento responsive */
+@media (max-width: 900px) {
+  [data-theme="neo"] .timeline { grid-template-columns: repeat(2, 1fr); }
+  [data-theme="neo"] .timeline-item:nth-child(1),
+  [data-theme="neo"] .timeline-item:nth-child(5),
+  [data-theme="neo"] .timeline-item:nth-child(7) { grid-column: span 1; min-height: 260px; }
+  [data-theme="neo"] .timeline-item:nth-child(3) { grid-row: span 1; }
+}
+@media (max-width: 480px) {
+  [data-theme="neo"] .timeline { grid-template-columns: 1fr; }
+  [data-theme="neo"] .hero-content h1 { font-size: clamp(3rem, 14vw, 5rem); }
+}
